@@ -1,0 +1,23 @@
+package capturesim.cwc2020.players;
+
+import capturesim.core.Player;
+import lombok.Data;
+
+@Data
+public class Team implements Player {
+
+    private String name;
+    private int score;
+
+    public Team(String name) {
+        setName(name);
+    }
+
+    @Override
+    public void updateScore(int points) {
+        score += points;
+        if(points > 0) {
+            System.out.println("Team " + getName() + " earned " + points + " points, Now having " + score + " total points");
+        }
+    }
+}

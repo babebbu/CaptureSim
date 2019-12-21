@@ -1,0 +1,90 @@
+package capturesim.cwc2020.transactions;
+
+import capturesim.core.Player;
+import capturesim.core.Transaction;
+import capturesim.cwc2020.scores.Hill;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.stream.Collectors;
+
+@Data
+public class HillCaptured implements Transaction {
+
+    private Player player;
+    private Hill hill;
+    private int timestamp;
+
+    @Setter(AccessLevel.PRIVATE)
+    @Getter(AccessLevel.PRIVATE)
+    private int points;
+
+    public HillCaptured(Player player, Hill hill, int timestamp) {
+        setPlayer(player);
+        setHill(hill);
+        setTimestamp(timestamp);
+    }
+
+    private void addBonusPoints(int points) {
+        this.points += points;
+    }
+
+    @Override
+    public int process() {
+        getHill().setNextHolder(player);
+        return 0;
+    }
+
+    public static int getPoints(Player player, Hill hill, int clock) {
+        HillCaptured hillCaptured = new HillCaptured(player, hill, clock);
+        if(clock > 0) {
+            // Get Points
+            hillCaptured.setPoints(hill.getPoints(clock));
+            System.out.println("At " + hill.getName() + ", Team " + player.getName() + " has been owning the hill, Gain " + hill.getPoints(clock) + " interval points");
+
+            // When the hill is captured by another team who is not the current holder.
+            hill.getNextHolder().ifPresent(nextHolder -> {
+                // Bonus if a streak ends
+                if(hill.getHoldStreak() >= 3 && hill.getCurrentHolder().isPresent()) {
+                    hillCaptured.addBonusPoints(hill.getHoldStreakPoints());
+                    System.out.println("At " + hill.getName() + ", Team " + nextHolder.getName() + " ends Team "
+                        + hill.getCurrentHolder().get().getName() + "'s streak of " + hill.getHoldStreak() + ", Gain "
+                        + hill.getHoldStreakPoints() + " bonus points");
+                }
+                hill.setHoldStreak(0);
+                hill.setCurrentHolder(nextHolder);
+                hill.setNextHolder(null);
+            });
+
+            // Detect Activation of the Hills
+            hill.getCurrentHolder().ifPresent(holder -> {
+                // Detect First Blood or Unique Capture
+                hill.getFirstBloodClaimer().ifPresentOrElse(firstBloodClaimer -> {
+                    // Unique Captures
+                    if (holder != firstBloodClaimer &&
+                        hill.getUniqueCaptures()
+                            .stream()
+                            .filter(team -> team == holder)
+                            .collect(Collectors.toList()).isEmpty()) {
+                        hillCaptured.addBonusPoints(hill.getUniqueCapturePoints());
+                        System.out.println("At " + hill.getName() + ", Team " + holder.getName() + " makes a unique captured, Gain " + hill.getUniqueCapturePoints() + " bonus points");
+                        hill.increaseUniqueCapturePoints();
+                        hill.getUniqueCaptures().add(holder);
+                    }
+                }, () -> {
+                    // First Blood
+                    int firstBlood = hill.getCalculatedFirstBloodPoints(hill.getFirstClockTick(), clock);
+                    System.out.println("At " + hill.getName() + ", Team " + holder.getName() + " claims FIRST BLOOD, Gain " + firstBlood + " bonus points");
+                    hillCaptured.addBonusPoints(firstBlood);
+                    hill.setFirstBloodClaimer(holder);
+                });
+            });
+
+            hill.increaseHoldStreak();
+            return hillCaptured.getPoints();
+        }
+        return 0;
+    }
+}
