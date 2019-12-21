@@ -7,12 +7,12 @@ public abstract class DefaultSimulator implements Simulator {
     @Override
     public void simulate() {
         start();
-        processEvents();
+        processTransactions();
         stop();
     }
 
     abstract protected void start();
-    abstract protected void processEvents();
+    abstract protected void processTransactions();
     abstract protected void stop();
 
 }
