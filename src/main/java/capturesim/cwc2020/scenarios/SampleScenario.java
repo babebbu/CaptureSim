@@ -14,11 +14,9 @@ import java.util.ArrayList;
 
 public class SampleScenario {
 
-    private static GameService gameService;
-
     public static void main(String[] args) {
         Game game = new CyberWarfareContest2020Game();
-        gameService = new GameService(game);
+        GameService gameService = new GameService(game);
 
         game.getPlayers().addAll(new ArrayList<>() {{
             add(new Team("S!gnature"));
