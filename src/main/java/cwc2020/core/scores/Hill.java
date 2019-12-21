@@ -93,7 +93,7 @@ public class Hill implements Score {
 
     @Override
     public int getPoints() {
-        return points;
+        return 0;
     }
 
 }
