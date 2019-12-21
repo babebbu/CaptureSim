@@ -43,7 +43,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
 
     @Override
     public void processEvents() {
-        for (clock = 0; clock <= duration; clock+=5) {
+        for (clock = 0; clock <= duration; clock++) {
             System.out.println("=======================================");
             System.out.println("Time: " + clock);
             System.out.println("---------------------------------------");
