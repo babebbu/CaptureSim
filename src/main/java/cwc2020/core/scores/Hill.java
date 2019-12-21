@@ -36,9 +36,6 @@ public class Hill implements Score {
 
     private int holdStreak;
 
-    @Setter(AccessLevel.NONE)
-    private int points;
-
     public Hill(String name, int firstClockTick, int interval, int increasingPoints, int firstBloodPoints, int uniqueCapturePoints, int uniqueCaptureIncreasingPoints, int holdStreakIncreasingPoints) {
         setName(name);
         setFirstClockTick(firstClockTick);
