@@ -6,7 +6,7 @@
 
     <groupId>cwc</groupId>
     <artifactId>capturesim</artifactId>
-    <version>2.1.0-RELEASE</version>
+    <version>2.2.0-RELEASE</version>
 
     <build>
         <plugins>
