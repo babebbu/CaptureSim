@@ -20,4 +20,5 @@ public class Team implements Player {
             System.out.println("Team " + getName() + " earned " + points + " points, Now having " + score + " total points");
         }
     }
+
 }

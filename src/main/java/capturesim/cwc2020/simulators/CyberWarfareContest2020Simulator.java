@@ -47,6 +47,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
             System.out.println("=======================================");
             System.out.println("Time: " + clock);
             System.out.println("---------------------------------------");
+
             // Search Transactions that match clock
             List<Transaction> transactions = game.getTransactions()
                 .stream()
@@ -60,8 +61,8 @@ public class CyberWarfareContest2020Simulator implements Simulator {
             hills.forEach(hill -> {
                 if(clock % hill.getInterval() == 0 && clock >= hill.getFirstClockTick()) {
                     hill.getNextHolder().ifPresentOrElse(
-                        player -> player.updateScore(HillCaptured.getPoints(player, hill, clock)),
-                        () -> hill.getCurrentHolder().ifPresent(player -> player.updateScore(HillCaptured.getPoints(player, hill, clock)))
+                        player -> player.updateScore(HillCaptured.getPoints(hill, player, clock)),
+                        () -> hill.getCurrentHolder().ifPresent(player -> player.updateScore(HillCaptured.getPoints(hill, player, clock)))
                     );
                 }
             });
@@ -75,4 +76,5 @@ public class CyberWarfareContest2020Simulator implements Simulator {
         System.out.println("---------------------------------------");
         game.getPlayers().forEach(System.out::println);
     }
+
 }

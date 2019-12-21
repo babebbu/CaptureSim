@@ -12,6 +12,10 @@ public class HillService {
         this.hills = hills;
     }
 
+    public List<Hill> all() {
+        return hills;
+    }
+
     public Hill find(String name) {
         return hills
             .stream()
@@ -19,4 +23,5 @@ public class HillService {
             .findFirst()
             .orElse(new Hill("Abandoned Hills", 0, 0, 0, 0, 0, 0, 0));
     }
+
 }

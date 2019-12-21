@@ -95,4 +95,5 @@ public class Hill implements Score {
     public int getPoints() {
         return points;
     }
+
 }

@@ -13,17 +13,17 @@ import java.util.stream.Collectors;
 @Data
 public class HillCaptured implements Transaction {
 
-    private Player player;
     private Hill hill;
+    private Player player;
     private int timestamp;
 
     @Setter(AccessLevel.PRIVATE)
     @Getter(AccessLevel.PRIVATE)
     private int points;
 
-    public HillCaptured(Player player, Hill hill, int timestamp) {
-        setPlayer(player);
+    public HillCaptured(Hill hill, Player player, int timestamp) {
         setHill(hill);
+        setPlayer(player);
         setTimestamp(timestamp);
     }
 
@@ -37,8 +37,8 @@ public class HillCaptured implements Transaction {
         return 0;
     }
 
-    public static int getPoints(Player player, Hill hill, int clock) {
-        HillCaptured hillCaptured = new HillCaptured(player, hill, clock);
+    public static int getPoints(Hill hill, Player player, int clock) {
+        HillCaptured hillCaptured = new HillCaptured(hill, player, clock);
         if(clock > 0) {
             // Get Points
             hillCaptured.setPoints(hill.getPoints(clock));
@@ -87,4 +87,5 @@ public class HillCaptured implements Transaction {
         }
         return 0;
     }
+
 }

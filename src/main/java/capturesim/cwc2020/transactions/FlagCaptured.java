@@ -10,8 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class FlagCaptured implements Transaction {
 
-    private Player player;
     private Flag flag;
+    private Player player;
     private int timestamp;
 
     @Override

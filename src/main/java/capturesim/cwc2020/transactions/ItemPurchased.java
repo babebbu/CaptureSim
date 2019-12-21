@@ -10,8 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class ItemPurchased implements Transaction {
 
-    private Player player;
     private Item item;
+    private Player player;
     private int timestamp;
 
     @Override
@@ -28,4 +28,5 @@ public class ItemPurchased implements Transaction {
     public int getTimestamp() {
         return timestamp;
     }
+
 }

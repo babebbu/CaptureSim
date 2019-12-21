@@ -18,4 +18,5 @@ public class Item implements Score {
     public int getPoints() {
         return 0;
     }
+
 }

@@ -13,7 +13,7 @@ public class Flag implements Score {
     private int points;
     private int firstBloodPoints;
 
-    private Player firstBloodClaimer = null;
+    private Player firstBloodClaimer;
 
     public Flag(String name, int points) {
         setName(name);

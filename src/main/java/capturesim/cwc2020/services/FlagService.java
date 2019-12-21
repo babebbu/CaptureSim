@@ -12,6 +12,10 @@ public class FlagService {
         this.flags = flags;
     }
 
+    public List<Flag> all() {
+        return flags;
+    }
+
     public Flag find(String name) {
         return flags
             .stream()
@@ -19,4 +23,5 @@ public class FlagService {
             .findFirst()
             .orElse(new Flag("Empty Flag", 0));
     }
+
 }
