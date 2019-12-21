@@ -61,7 +61,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
                 if(clock % hill.getInterval() == 0 && clock >= hill.getFirstClockTick()) {
                     hill.getNextHolder().ifPresentOrElse(
                         player -> player.updateScore(HillCaptured.getPoints(player, hill, clock)),
-                        ()   -> hill.getCurrentHolder().ifPresent(player -> player.updateScore(HillCaptured.getPoints(player, hill, clock)))
+                        () -> hill.getCurrentHolder().ifPresent(player -> player.updateScore(HillCaptured.getPoints(player, hill, clock)))
                     );
                 }
             });
