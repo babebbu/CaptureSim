@@ -1,6 +1,6 @@
 package capturesim.cwc2020.scores;
 
-import capturesim.core.Score;
+import capturesim.core.interfaces.Score;
 import lombok.Data;
 
 @Data

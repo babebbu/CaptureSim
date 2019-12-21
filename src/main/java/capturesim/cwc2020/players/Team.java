@@ -1,6 +1,6 @@
 package capturesim.cwc2020.players;
 
-import capturesim.core.Player;
+import capturesim.core.interfaces.Player;
 import lombok.Data;
 
 @Data

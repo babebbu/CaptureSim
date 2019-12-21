@@ -1,4 +1,4 @@
-package capturesim.core;
+package capturesim.core.interfaces;
 
 public interface Player {
     String getName();

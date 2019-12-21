@@ -1,7 +1,7 @@
 package capturesim.cwc2020.scores;
 
-import capturesim.core.Player;
-import capturesim.core.Score;
+import capturesim.core.interfaces.Player;
+import capturesim.core.interfaces.Score;
 import lombok.Data;
 
 import java.util.Optional;

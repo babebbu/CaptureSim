@@ -1,6 +1,6 @@
 package capturesim.cwc2020.services;
 
-import capturesim.core.Game;
+import capturesim.core.interfaces.Game;
 import capturesim.cwc2020.players.Team;
 import capturesim.cwc2020.scores.Flag;
 import capturesim.cwc2020.scores.Hill;

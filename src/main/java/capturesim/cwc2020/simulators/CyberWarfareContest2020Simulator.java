@@ -1,10 +1,11 @@
 package capturesim.cwc2020.simulators;
 
+import capturesim.core.abstracts.DefaultSimulator;
 import capturesim.cwc2020.scores.Hill;
 import capturesim.cwc2020.transactions.HillCaptured;
-import capturesim.core.Game;
-import capturesim.core.Simulator;
-import capturesim.core.Transaction;
+import capturesim.core.interfaces.Game;
+import capturesim.core.interfaces.Simulator;
+import capturesim.core.interfaces.Transaction;
 import lombok.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CyberWarfareContest2020Simulator implements Simulator {
+public class CyberWarfareContest2020Simulator extends DefaultSimulator implements Simulator {
 
     private Game game;
     private int duration;
@@ -32,7 +33,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
     }
 
     @Override
-    public void start() {
+    protected void start() {
         setHills(game.getScores()
             .stream()
             .filter(score -> score instanceof Hill)
@@ -42,7 +43,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
     }
 
     @Override
-    public void processEvents() {
+    protected void processEvents() {
         for (clock = 0; clock <= duration; clock++) {
             System.out.println("=======================================");
             System.out.println("Time: " + clock);
@@ -70,7 +71,7 @@ public class CyberWarfareContest2020Simulator implements Simulator {
     }
 
     @Override
-    public void stop() {
+    protected void stop() {
         System.out.println("=======================================");
         System.out.println("Final Results");
         System.out.println("---------------------------------------");

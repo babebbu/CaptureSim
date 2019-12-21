@@ -1,7 +1,7 @@
 package capturesim.cwc2020.transactions;
 
-import capturesim.core.Player;
-import capturesim.core.Transaction;
+import capturesim.core.interfaces.Player;
+import capturesim.core.interfaces.Transaction;
 import capturesim.cwc2020.scores.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;

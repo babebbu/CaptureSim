@@ -1,8 +1,8 @@
 package capturesim.cwc2020.scenarios;
 
-import capturesim.core.Game;
+import capturesim.core.interfaces.Game;
 import capturesim.cwc2020.games.CyberWarfareContest2020Game;
-import capturesim.core.Simulator;
+import capturesim.core.interfaces.Simulator;
 import capturesim.cwc2020.players.Team;
 import capturesim.cwc2020.services.*;
 import capturesim.cwc2020.simulators.CyberWarfareContest2020Simulator;
