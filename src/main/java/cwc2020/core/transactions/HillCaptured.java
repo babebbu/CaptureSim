@@ -34,7 +34,7 @@ public class HillCaptured implements Transaction {
     @Override
     public int process() {
         getHill().setNextHolder(player);
-        return 0;
+        return getHill().getPoints();
     }
 
     public static int getPoints(Hill hill, Player player, int clock) {
