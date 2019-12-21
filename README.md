@@ -1,2 +1,2 @@
 # CaptureSim
-A simulator for simulating transaction-based game.
+A simulator for simulating transaction-based games
