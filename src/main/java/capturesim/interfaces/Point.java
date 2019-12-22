@@ -1,6 +1,6 @@
 package capturesim.interfaces;
 
-public interface Score {
+public interface Point {
 
     int getPoints();
 
