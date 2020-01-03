@@ -5,7 +5,7 @@ import java.util.Collection;
 public interface Game {
 
     Collection<Player> getPlayers();
-    Collection<Point> getPoints();
+    Collection<Scorable> getScorables();
     Collection<Transaction> getTransactions();
 
 }

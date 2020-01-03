@@ -3,7 +3,7 @@ package capturesim.interfaces;
 public interface Transaction {
 
     Player getPlayer();
-    int process();
+    Point process();
     int getTimestamp();
 
 }
