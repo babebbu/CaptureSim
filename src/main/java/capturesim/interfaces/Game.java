@@ -1,11 +1,11 @@
 package capturesim.interfaces;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface Game {
 
-    List<Player> getPlayers();
-    List<Point> getPoints();
-    List<Transaction> getTransactions();
+    Collection<Player> getPlayers();
+    Collection<Point> getPoints();
+    Collection<Transaction> getTransactions();
 
 }
